@@ -1,38 +1,192 @@
-.App {
-  text-align: center;
+/* Global */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f8fafc;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* Hero */
+.app-background {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.hero-section {
+  flex: 1;
+  padding: 100px 20px;
+  text-align: center;
+  color: #fff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Navbar adjustments */
+.navbar {
+  font-size: 1rem;
+}
+@media (max-width: 768px) {
+  .navbar {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
   }
-  to {
-    transform: rotate(360deg);
+  .navbar .form-control-sm {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+  }
+  .navbar .btn-sm {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+  }
+}
+
+/* Recipe Card */
+.recipe-card-small img {
+  height: 180px;
+  object-fit: cover;
+}
+
+
+/* Cards */
+.recipe-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.recipe-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.image-wrapper {
+  height: 200px;
+  overflow: hidden;
+}
+
+.recipe-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.recipe-card:hover .recipe-image {
+  transform: scale(1.08);
+}
+
+/* Cart Drawer */
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 320px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease-in-out;
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-drawer.open {
+  right: 0;
+}
+
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+}
+
+/* Buttons */
+.btn-warning {
+  background-color: #ffc107;
+  border: none;
+  color: #000;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+}
+/* Desktop logo */
+.navbar-brand {
+  font-size: 1.2rem;
+}
+/* Desktop logo */
+.logo-text {
+  font-size: 1.3rem;
+}
+/* Desktop view only */
+@media (min-width: 992px) {
+  .navbar-nav {
+    display: flex;
+    flex-direction: row; /* force horizontal layout */
+    align-items: center;
+    gap: 1.5rem; /* spacing between Home, Recipes, Cart */
+  }
+
+  .navbar-nav .nav-link {
+    white-space: nowrap; /* prevent breaking into new lines */
+  }
+
+  .navbar-nav .btn {
+    white-space: nowrap;
+  }
+}
+
+
+/* Mobile logo */
+@media (max-width: 768px) {
+  .logo-text {
+    font-size: 1rem !important;
+  }
+
+  .navbar .form-control {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+
+/* Mobile logo */
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 0.9rem !important;
+  }
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .image-wrapper {
+    height: 160px;
+  }
+
+  .hero-section {
+    padding: 60px 20px;
+  }
+
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 8px 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .cart-drawer {
+    width: 100%;
+  }
+
+  .recipe-card {
+    border-radius: 10px;
   }
 }

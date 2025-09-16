@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import OrderForm from "./OrderForm";
 
 function CheckoutPage({ cart, removeFromCart, updateQuantity }) {
+  const [showForm, setShowForm] = useState(false);
   const totalPrice = cart.reduce((acc, item) => acc + item.quantity * 200, 0);
 
   return (
@@ -45,7 +47,9 @@ function CheckoutPage({ cart, removeFromCart, updateQuantity }) {
                   </div>
 
                   {/* Price */}
-                  <p className="fw-semibold fs-6 mb-2">₹{item.quantity * 200}</p>
+                  <p className="fw-semibold fs-6 mb-2">
+                    ₹{item.quantity * 200}
+                  </p>
 
                   {/* Remove Button */}
                   <button
@@ -65,11 +69,17 @@ function CheckoutPage({ cart, removeFromCart, updateQuantity }) {
       {cart.length > 0 && (
         <div className="text-center mt-5 p-4 bg-light rounded-4 shadow-sm">
           <h4 className="fw-bold mb-3">Total: ₹{totalPrice}</h4>
-          <button className="btn btn-success btn-lg px-4 rounded-pill shadow">
-             Place Order
+          <button
+            className="btn btn-success btn-lg px-4 rounded-pill shadow"
+            onClick={() => setShowForm(true)}
+          >
+            Place Order
           </button>
         </div>
       )}
+
+      {/* Order Form Modal */}
+      {showForm && <OrderForm onClose={() => setShowForm(false)} />}
     </div>
   );
 }
